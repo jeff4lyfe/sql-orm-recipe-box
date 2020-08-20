@@ -1,5 +1,24 @@
 # Recipe Box With Sequelize
+Completed as part of the App Academy curriculum. Implementation by Juliet Shafto and Jeff Belcher.
 
+## Project Status
+- Initial setup
+  - [x] Initialize Sequelize project
+  - [x] Create a database user for the project
+  - [x] Change connection configuration
+  - [x] Create database
+- Units of measurement data table
+  - [ ] Migration
+  - [ ] Seed data
+- [ ] Recipe table model
+- [ ] Instruction table model
+- [ ] Ingredients table model
+- [ ] Update models with references
+- [ ] Update models with validations
+- [ ] Cascade delete for recipes
+- [ ] Building the repositories
+
+## Project Description
 In this project, you will build the Data Access Layer to power a Web
 application. Unlike previously, you will use the Sequelize library and tools to
 do this to build a more maintainable application.
