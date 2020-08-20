@@ -8,11 +8,11 @@ Completed as part of the App Academy curriculum. Implementation by Juliet Shafto
   - [x] Change connection configuration
   - [x] Create database
 - Units of measurement data table
-  - [ ] Migration
-  - [ ] Seed data
-- [ ] Recipe table model
-- [ ] Instruction table model
-- [ ] Ingredients table model
+  - [x] Migration
+  - [x] Seed data
+- [x] Recipe table model
+- [x] Instruction table model
+- [x] Ingredients table model
 - [ ] Update models with references
 - [ ] Update models with validations
 - [ ] Cascade delete for recipes
