@@ -13,10 +13,16 @@ Completed as part of the App Academy curriculum. Implementation by Juliet Shafto
 - [x] Recipe table model
 - [x] Instruction table model
 - [x] Ingredients table model
-- [ ] Update models with references
-- [ ] Update models with validations
-- [ ] Cascade delete for recipes
-- [ ] Building the repositories
+- [x] Update models with references
+- [x] Update models with validations
+- [x] Cascade delete for recipes
+- Building the repositories
+  - [x] Loading 10 recipes when the pages loads
+  - [x] Getting recipe by ID
+  - [ ] Creating recipes
+  - [ ] Deleting recipes
+  - [ ] Searching for recipes
+
 
 ## Project Description
 In this project, you will build the Data Access Layer to power a Web

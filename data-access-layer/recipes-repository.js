@@ -34,6 +34,12 @@ async function getTenNewestRecipes() {
   // });
   //
   // Docs: https://sequelize.org/master/class/lib/model.js~Model.html#static-method-findAll
+
+  const recipes = await Recipe.findAll({
+    limit:10,
+    order: [['updatedAt', 'DESC']]
+  });
+  return recipes;
 }
 
 async function getRecipeById(id) {
@@ -71,6 +77,15 @@ async function getRecipeById(id) {
   // Here are links to the wholly-inadequate docs for this.
   // Docs: https://sequelize.org/v5/manual/models-usage.html#eager-loading
   //       https://sequelize.org/v5/manual/models-usage.html#nested-eager-loading
+  return Recipe.findByPk(id, {
+    include: [
+      { model: Ingredient, include: [
+        { model: MeasurementUnit }
+      ]},
+      { model: Instruction }
+    ]
+  })
+  // return recipe;
 }
 
 async function deleteRecipe(id) {
