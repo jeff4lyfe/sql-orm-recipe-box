@@ -28,6 +28,20 @@ async function createNewInstruction(specification, recipeId) {
   // return it using the maximum listOrder from the query just before this.
   //
   // Docs: https://sequelize.org/v5/manual/instances.html#creating-persistent-instances
+  let instructions = await Instruction.findOne({
+    where: {
+      recipeId: recipeId
+    },
+    order: [['listOrder', 'DESC']]
+  })
+
+  let listOrder = (instructions) ? instructions.listOrder + 1 : 1;
+  // figure out what the maximum listOrder is and add one to it
+  return await Instruction.create({
+    specification: specification,
+    recipeId: recipeId,
+    listOrder: listOrder
+  })
 }
 
 

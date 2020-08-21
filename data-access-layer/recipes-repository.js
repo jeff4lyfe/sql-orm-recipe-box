@@ -94,6 +94,11 @@ async function deleteRecipe(id) {
   // saw in the video.
   //
   // Docs: https://sequelize.org/master/class/lib/model.js~Model.html#instance-method-destroy
+  await Recipe.destroy({
+    where: {
+      id: id
+    }
+  })
 }
 
 async function createNewRecipe(title) {
@@ -101,6 +106,8 @@ async function createNewRecipe(title) {
   // return it.
   //
   // Docs: https://sequelize.org/v5/manual/instances.html#creating-persistent-instances
+  return await Recipe.create({title: title});
+
 }
 
 async function searchRecipes(term) {
@@ -108,6 +115,13 @@ async function searchRecipes(term) {
   // given term in its title
   //
   // Docs: https://sequelize.org/v5/manual/querying.html
+  return Recipe.findAll({
+    where: {
+      title: {
+        [Op.iLike]: term
+      }
+    }
+  })
 }
 
 

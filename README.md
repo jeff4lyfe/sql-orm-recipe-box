@@ -19,9 +19,9 @@ Completed as part of the App Academy curriculum. Implementation by Juliet Shafto
 - Building the repositories
   - [x] Loading 10 recipes when the pages loads
   - [x] Getting recipe by ID
-  - [ ] Creating recipes
-  - [ ] Deleting recipes
-  - [ ] Searching for recipes
+  - [x] Creating recipes
+  - [x] Deleting recipes
+  - [x] Searching for recipes
 
 
 ## Project Description
