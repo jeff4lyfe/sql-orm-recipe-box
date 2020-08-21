@@ -48,7 +48,7 @@ of code in well-organized, highly-maintainable software project. Remembering
 where code is _is hard_. That's why having clearly-named files and directories
 is so very important.
 
-## The data model analysis
+### The data model analysis
 
 This looks no different because it's the same application.
 
@@ -100,14 +100,14 @@ That is enough to make a good model for the recipe box.
 
 ![recipe box data model]
 
-## The application
+### The application
 
 The application is a standard [express.js] application using the [pug] library
 to generate the HTML and the [node-postgres] library to connect to the database.
 
 It already has [sequelize] and [sequelize-cli] installed.
 
-## Getting started
+### Getting started
 
 * Download the starter project from
   https://github.com/appacademy-starters/sql-orm-recipe-box
@@ -137,27 +137,27 @@ Postbird, or `psql` with that connection.
 **Warning**: running the seed files will destroy all data that you have in the
 database.
 
-## Your code
+### Your code
 
 You're going to be using JavaScript and the tools of Sequelize. Keep the
 [Sequelize documentation] open and handy. Even developers that use ORMs every
 day will keep the documentation open because there's so much to know about them.
 
-## Phase 1: Initialize the Sequelize project
+### Phase 1: Initialize the Sequelize project
 
 Because this project already has [sequelize-cli] installed, you can initialize
 the project by typing `npx sequelize-cli init`. The `npx` command runs
 locally-installed tools. That will create the project structure that Sequelize
 expects for us to continue to use its tools.
 
-## Phase 2: Create a database user for the project
+### Phase 2: Create a database user for the project
 
 Using a PostgreSQL client like `psql` or Postbird, create a new user for this
 application named "sequelize_recipe_box_app" with the password "HfKfK79k" _and_
 the ability to create a database. Here's the [link to the CREATE USER
 documentation] so that you can determine which options to give.
 
-## Phase 2: Change the connection configuration
+### Phase 2: Change the connection configuration
 
 The project contains a directory named **config**. Inside there, you will find a
 file named **config.json**. You need to make some configuration changes.
@@ -177,7 +177,7 @@ file named **config.json**. You need to make some configuration changes.
 That will configure the application and the Sequelize tools to properly connect
 to your development database.
 
-## Phase 3: Create your database
+### Phase 3: Create your database
 
 Rather than writing SQL to do this, you will use the tools. Run
 
@@ -208,7 +208,7 @@ npx sequelize-cli db:drop
 
 If you run that, run the "create" command, again, so the database exists.
 
-## Phase 4: The units of measurement data
+### Phase 4: The units of measurement data
 
 Just as a review, here is the specification for the table that holds units of
 measurement.
@@ -222,7 +222,7 @@ Luckily, the Sequelize models and migrations take care of the "id" property for
 you without you having to do anything. So, you can just focus on that "name"
 property.
 
-### Create a migration
+#### Create a migration
 
 It's time to create the first migration, the one that defines the table that
 will hold units of measure. You can use the Sequelize CLI to generate the
@@ -274,7 +274,7 @@ Sequelize will make it 255 characters long. The specification for the table
 says it should really only be 20 characters. To tell the migration that, change
 the type for "name" from `Sequelize.STRING` to `Sequelize.STRING(20)`.
 
-## Run your migration
+### Run your migration
 
 If you now run your migration with the Sequelize CLI, it will create the table
 for you.
@@ -316,7 +316,7 @@ after it's been committed and shared in your Git repository. Asking others to
 rollback their migrations just because you changed one of yours is bad manners.
 Instead, you should add a new migration that makes the change that you want.
 
-## Create the seed data
+### Create the seed data
 
 You can create the seed data for the unit of measurements by creating a
 **seeder** as the Sequelize CLI calls them. You can create one using the
@@ -372,7 +372,7 @@ Now, run the Sequelize CLI with the command `db:seed:all`.
 After you get that done, you can confirm that all of the records (rows) were
 created in the "MeasurementUnits" table.
 
-## Phase 5: The recipe table model
+### Phase 5: The recipe table model
 
 This will go much like the last one, except there's no seed data. Just to
 refresh your memory, here's the specification for the "recipes" table.
@@ -407,7 +407,7 @@ Indexes:
     "Recipes_pkey" PRIMARY KEY, btree (id)
 ```
 
-## Phase 6: The instruction table model
+### Phase 6: The instruction table model
 
 Now, things get a little trickier because this model will reference the recipe
 model. Here's the specification for the "instructions" table.
@@ -465,7 +465,7 @@ Foreign-key constraints:
 You should see all non-null columns and a foreign key between the "Instructions"
 table and the "Recipes" table.
 
-## Phase 7: The ingredients model
+### Phase 7: The ingredients model
 
 The model for ingredients has _two_ foreign keys. Create the model and migration
 for it. Here's the table specification.
@@ -504,7 +504,7 @@ Foreign-key constraints:
         REFERENCES "Recipes"(id)
 ```
 
-## Phase 8: Seed data for all of the tables
+### Phase 8: Seed data for all of the tables
 
 Now that you have tables in the database, it's time to create some seed data for
 all of them. In the **data-access-layer** directory, you will find three text
@@ -554,7 +554,7 @@ migrate the database, and then you can try running your seeders, again. You may
 need to rename your migration filenames to get your seeds running in the
 correct order.
 
-## Phase 9: Updating models with references
+### Phase 9: Updating models with references
 
 Now that you have all of the migrations set up correctly and a database defined,
 it is time for you to turn your attention to the model files that were
@@ -607,7 +607,7 @@ MeasurementUnit, and Recipe. Then, modify those model files accordingly with
 the `hasMany` and `belongsTo` associations, always specifying the name of the
 foreign key column that binds the two tables together.
 
-## Phase 10: Updating models with validations
+### Phase 10: Updating models with validations
 
 Now that you have seed data created, it will be important to prevent users from
 entering data that does not meet the expectations of the data model.
@@ -660,7 +660,7 @@ module.exports = (sequelize, DataTypes) => {
 Make sure all of the other string properties in the models won't allow the empty
 string to be set on them.
 
-## Phase 11: Cascade delete for recipes
+### Phase 11: Cascade delete for recipes
 
 The Recipe model has dependencies: the Instruction and the Ingredient both have
 _belongs to_ relationships. This means that the row in the "Recipes" table must
@@ -682,7 +682,7 @@ property/value pairs:
 Refer to the documentation on [Associations] to see an example. But, don't
 delete the `foreignKey` property that you put there in Phase 9.
 
-## Phase 12: Building the repositories
+### Phase 12: Building the repositories
 
 Now that you have the seeds, models, and migrations out of the way, you can
 build the data access layer with a lot of speed. Sequelize will now handle all
